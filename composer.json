@@ -1,12 +1,13 @@
 {
-    "name": "uams-web/statamic-addon-template",
-    "description": "Starting point for UAMS Statamic add-ons. Replace this description when you start an add-on from it.",
+    "name": "uams-web/statamic-redirects",
+    "description": "Redirect rules for Statamic: a redirects global set served on the 404 path, rules on redirect domains, an edge redirect manifest, and a marketing-redirect request and approval workflow.",
     "keywords": [
         "statamic",
-        "statamic-addon"
+        "statamic-addon",
+        "redirects"
     ],
     "type": "statamic-addon",
-    "homepage": "https://github.com/UAMS-Web/statamic-addon-template",
+    "homepage": "https://github.com/UAMS-Web/statamic-redirects",
     "authors": [
         {
             "name": "UAMS Web Services"
@@ -17,27 +18,27 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/UAMS-Web/statamic-addon-template/issues",
-        "source": "https://github.com/UAMS-Web/statamic-addon-template"
+        "issues": "https://github.com/UAMS-Web/statamic-redirects/issues",
+        "source": "https://github.com/UAMS-Web/statamic-redirects"
     },
     "autoload": {
         "psr-4": {
-            "UAMSWeb\\AddonTemplate\\": "src/"
+            "UAMSWeb\\Redirects\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "UAMSWeb\\AddonTemplate\\Tests\\": "tests/"
+            "UAMSWeb\\Redirects\\Tests\\": "tests/"
         }
     },
     "extra": {
         "statamic": {
-            "name": "Addon Template",
-            "description": "Replace this description when you start an add-on from the template."
+            "name": "Redirects",
+            "description": "Redirect rules, redirect domains and a marketing-redirect workflow."
         },
         "laravel": {
             "providers": [
-                "UAMSWeb\\AddonTemplate\\ServiceProvider"
+                "UAMSWeb\\Redirects\\ServiceProvider"
             ]
         },
         "composer-exit-on-patch-failure": true

@@ -1,4 +1,4 @@
-# Agent instructions for statamic-addon-template
+# Agent instructions for statamic-redirects
 
 This file is the single source of agent instructions for this repository. Claude Code, Cursor and Codex all read it directly; there is no `CLAUDE.md`, because Claude Code reads `AGENTS.md` only when `CLAUDE.md` is absent. Put instructions here, never in a `CLAUDE.md`.
 
@@ -6,7 +6,7 @@ Everything above the generated section belongs to this repository and is edited 
 
 ## About this repository
 
-A Statamic add-on (`uams-web/statamic-addon-template`, namespace `UAMSWeb\AddonTemplate`). Replace this paragraph with what it does. It is a Composer library with no `artisan`, `.env`, database or front end of its own; a host application boots it through `extra.laravel.providers`. The `statamic-package-conventions` skill covers what that changes.
+A Statamic add-on (`uams-web/statamic-redirects`, namespace `UAMSWeb\Redirects`). It serves redirect rules: a `redirects` global set answered on the 404 path, rules on redirect domains, an edge redirect manifest, and a Control Panel workflow for requesting and approving marketing redirects. Its code is being moved here from `UAMS-Web/uams-statamic` under UAMS-Web/uams-statamic#397. It is a Composer library with no `artisan`, `.env`, database or front end of its own; a host application boots it through `extra.laravel.providers`. The `statamic-package-conventions` skill covers what that changes.
 
 ### Commands
 
