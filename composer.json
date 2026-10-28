@@ -1,6 +1,7 @@
 {
     "name": "uams-web/statamic-redirects",
     "description": "Redirect rules for Statamic: a redirects global set served on the 404 path, rules on redirect domains, an edge redirect manifest, and a marketing-redirect request and approval workflow.",
+    "license": "MIT",
     "keywords": [
         "statamic",
         "statamic-addon",

@@ -20,6 +20,10 @@ Statamic discovers the add-on through Composer. To change its settings, publish 
 php artisan vendor:publish --tag=statamic-redirects-config
 ```
 
+## License
+
+MIT. See [`LICENSE`](LICENSE).
+
 ## Documentation
 
 - [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md): developing the add-on against a host.
