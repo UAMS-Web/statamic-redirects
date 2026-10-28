@@ -35,3 +35,13 @@ Oldest first, one entry per closed decision, so **a new entry is appended to the
 **Rejected.** Snapshotting the synced files into the template: every new add-on would begin with a stale copy that conflicts with its first sync pull request. Copying a license from an existing add-on: legal has not decided which license applies.
 
 **Companion.** `UAMS-Web/uams-statamic#3039`.
+
+## 2026-10-28: The add-on goes to Packagist on MIT, ahead of UAMS legal's decision (repository setup)
+
+**Decision.** The operator decided on 2026-10-28 to publish `uams-web/statamic-redirects` on Packagist, the same way as `UAMS-Web/statamic-form-settings`, so that `UAMS-Web/uams-statamic` can require it by name. The add-on is MIT licensed (`LICENSE`, `"license": "MIT"`), matching the other add-ons that site requires, ahead of `UAMS-Web/uams-statamic#3039`. The Marketplace is not part of this decision.
+
+**Why.** A public Packagist package needs a declared license, and `uams-statamic` requires the add-on by Composer name rather than by path. Matching the sibling add-ons keeps one license across them, and the file can change if UAMS legal decides otherwise.
+
+**Rejected.** Waiting for UAMS legal before declaring a license: the package cannot be listed without one, and the site cannot require it by name until it is listed. Requiring the add-on from a path repository: it ties the site to one machine's checkout.
+
+**Companion.** `UAMS-Web/uams-statamic#397`, `UAMS-Web/uams-statamic#3039`.
