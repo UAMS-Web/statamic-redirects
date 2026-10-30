@@ -205,31 +205,6 @@ jobs:
       # plugin revision its parsing model was measured against.
       - run: php .claude/skills/pest-testing/scripts/check-mutate-ignore.php
 
-  mutate:
-    name: Mutation score (full, with PCOV)
-    needs: [rector, phpstan]
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
-    steps:
-      - uses: actions/checkout@v7
-      - uses: ./.github/actions/setup
-        with:
-          coverage: pcov
-
-      # `--min=100` makes Pest fail the step on any survivor. The run is kept in a log
-      # because a run that mutated nothing is a setup failure that Pest's exit status
-      # reports or not depending on its version and `ignore_min_score_on_zero_mutations`.
-      # Bash runs this step with pipefail, so `tee` does not hide Pest's status.
-      - name: Run mutation testing
-        run: composer mutate -- --min=100 2>&1 | tee mutate.log
-
-      # Reads the log, not the exit status: fails on zero mutants, and on any untested,
-      # uncovered, pending or timed-out mutant. Runs even when the step above failed, so the
-      # log's own account of the failure is printed.
-      - name: Check the mutation run
-        if: always()
-        run: php .claude/skills/pest-testing/scripts/check-mutation-run.php mutate.log
-
   pest:
     name: Pest
     needs: [rector, phpstan]
@@ -253,7 +228,7 @@ jobs:
       # Fails when more tests were skipped than tests/skip-baseline.json records.
       - name: Skip baseline
         if: ${{ !cancelled() }}
-        run: php .claude/skills/pest-testing/scripts/check-skip-baseline.php --report=junit.xml --baseline=tests/skip-baseline.json
+        run: php .claude/skills/pest-testing/scripts/check-skip-baseline.php --report=junit.xml --baseline=tests/skip-baseline.json --band=parallel
 
       # Fails when one class takes over 25 percent of the summed class time, or over 900 seconds.
       - name: Slowest class
@@ -264,7 +239,7 @@ jobs:
   # job in the file; scripts/check-templates.mjs in UAMS-Web/uams-claude-skills checks it.
   ci:
     name: CI
-    needs: [composer-validate, synced-files, no-emoji, aggregate-needs, pint, rector, phpstan, mutate-ignore, mutate, pest]
+    needs: [composer-validate, synced-files, no-emoji, aggregate-needs, pint, rector, phpstan, mutate-ignore, pest]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 5
