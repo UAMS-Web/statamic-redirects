@@ -233,7 +233,7 @@ jobs:
       # Fails when one class takes over 25 percent of the summed class time, or over 900 seconds.
       - name: Slowest class
         if: ${{ !cancelled() }}
-        run: php .claude/skills/pest-testing/scripts/check-slowest-class.php --report=junit.xml --share-ceiling=25 --ceiling=900
+        run: php .claude/skills/pest-testing/scripts/check-slowest-class.php --report=junit.xml --band=parallel --ceiling=900
 
   # The one check a ruleset requires from this workflow. Keep `needs:` listing every other
   # job in the file; scripts/check-templates.mjs in UAMS-Web/uams-claude-skills checks it.
